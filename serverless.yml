@@ -1,0 +1,31 @@
+service: aws-image-recognition 
+
+provider:
+  name: aws
+  runtime: python2.7
+  region: us-west-2
+  versionFunctions: false
+  iamRoleStatements:
+      - Effect: Allow
+        Action:
+            - s3:*
+        Resource: "*"
+      - Effect: Allow
+        Action:
+            - SNS:*
+        Resource: "*"
+      - Effect: "Allow"
+        Action:
+            - "rekognition:DetectLabels"
+        Resource: "*"
+    
+
+
+
+functions:
+  imagerecognition:
+    handler: handler.lambda_entry
+    events:
+        - s3:
+            bucket: image-bucket-u3154816
+            event: s3:ObjectCreated:*
