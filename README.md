@@ -1,1 +1,1 @@
-# Python-Lambda-AWSImageRekognition
+# Python-Lambda-AWSRekognition
